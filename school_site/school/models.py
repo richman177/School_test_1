@@ -18,7 +18,6 @@ class School(models.Model): #  Мектеп
     school_full_title = models.TextField()  #  Мектеп жонундо толук маалымат
     school_mission = models.TextField()  #  Мектеп миссиясы
 
-
     def __str__(self):
         return f'{self.school_title}, {self.school_level}'
 
@@ -91,5 +90,3 @@ class Qualification(models.Model):  # Квалификация
 
     def __str__(self):
         return str(self.document)
-
-

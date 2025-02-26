@@ -28,6 +28,11 @@ class TeacherListAPIView(generics.ListAPIView):
     serializer_class = TeacherSerializer
 
 
+class TeacherAPIView(generics.ListAPIView):
+    queryset = Teacher.objects.all()
+    serializer_class = TeacherSerializer
+
+
 class TimelineListAPIView(generics.ListAPIView):
     queryset = Timeline.objects.all()
     serializer_class = TimelineSerializer
