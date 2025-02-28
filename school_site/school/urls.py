@@ -7,7 +7,7 @@ router = routers.SimpleRouter()
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('', HomepageListAPIView.as_view(), name='homepage_list'),
+    path('homepage/', HomepageListAPIView.as_view(), name='homepage_list'),
     path('school/', SchoolListAPIView.as_view(), name='school_list'),
     path('specialization/', SpecializationListAPIView.as_view(), name='specialization_list'),
     path('users/', AdminListAPIView.as_view(), name='admin_list'),
