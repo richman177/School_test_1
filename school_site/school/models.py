@@ -1,5 +1,31 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
+class TeacherCount(models.Model):
+    count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f'Teachers count: {self.count}'
+
+
+class Teacher(models.Model):
+    teacher_full_name = models.CharField(max_length=32)
+    teacher_picture = models.FileField(upload_to='teacher_picture')
+    specialization = models.ForeignKey('Specialization', on_delete=models.CASCADE)
+    seniority = models.CharField(max_length=20)
+
+    def __str__(self):
+        return f'{self.teacher_full_name}, {self.specialization}, {self.seniority}'
+
+
+@receiver(post_save, sender=Teacher)
+def update_teacher_count(sender, instance, **kwargs):
+    count_obj, created = TeacherCount.objects.get_or_create(id=1)
+    count_obj.count = Teacher.objects.count()
+    count_obj.save()
 
 
 class Homepage(models.Model):  #  Башкы бет
@@ -11,7 +37,7 @@ class Homepage(models.Model):  #  Башкы бет
         return self.school_name
 
 
-class School(models.Model): #  Мектеп
+class School(models.Model):  # Мектеп
     school_title = models.CharField(max_length=50)
     school_level = models.CharField(max_length=100)  #   Мектек статусу(жалпы,орто)
     school_picture = models.FileField(upload_to='school_pictures')
@@ -44,6 +70,13 @@ class Admin(models.Model):
         return f'{self.admin_full_name}, {self.specialization}'
 
 
+class TeacherCount(models.Model):
+    count = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f'Teachers count: {self.count}'
+
+
 class Teacher(models.Model):
     teacher_full_name = models.CharField(max_length=32)
     teacher_picture = models.FileField(upload_to='teacher_picture')
@@ -52,6 +85,13 @@ class Teacher(models.Model):
 
     def __str__(self):
         return f'{self.teacher_full_name}, {self.specialization}, {self.seniority}'
+
+
+@receiver(post_save, sender=Teacher)
+def update_teacher_count(sender, instance, **kwargs):
+    count_obj, created = TeacherCount.objects.get_or_create(id=1)
+    count_obj.count = Teacher.objects.count()
+    count_obj.save()
 
 
 class Timeline(models.Model): # Мектеп хронологиясы

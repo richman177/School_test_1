@@ -1,6 +1,8 @@
 from django.urls import path, include
 from .views import *
 from rest_framework import routers
+from django.urls import path
+from .views import TeacherCountView
 
 
 router = routers.SimpleRouter()
@@ -18,4 +20,5 @@ urlpatterns = [
     path('contact/', ContactListAPIView.as_view(), name='contact_list'),
     path('communication/', CommunicationListAPIView.as_view(), name='communication_list'),
     path('qualification/', QualificationListAPIView.as_view(), name='qualification_list'),
+    path('teacher_count/', TeacherCountView.as_view(), name='teacher_count'),
 ]
