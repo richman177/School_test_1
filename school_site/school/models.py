@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver 
 
 
-class TeacherCount(models.Model):
+class TeacherCount(models.Model): 
     count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
