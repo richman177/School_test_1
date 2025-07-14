@@ -12,7 +12,7 @@ class TeacherCount(models.Model):
 
 
 class Teacher(models.Model):
-    teacher_full_name = models.CharField(max_length=32)
+    teacher_full_name = models.CharField(max_length=32) 
     teacher_picture = models.FileField(upload_to='teacher_picture')
     specialization = models.ForeignKey('Specialization', on_delete=models.CASCADE)
     seniority = models.CharField(max_length=20)
