@@ -8,7 +8,7 @@ class TeacherCount(models.Model):
     count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f'Teachers count: {self.count}'
+        return f'Teachers count: {self.count}' 
 
 
 class Teacher(models.Model):
