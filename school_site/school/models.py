@@ -29,7 +29,7 @@ def update_teacher_count(sender, instance, **kwargs):
 
 
 class Homepage(models.Model):  #  Башкы бет
-    school_name = models.CharField(max_length=70, unique=True)  #  Мектептин аты
+    school_name = models.CharField(max_length=70, unique=True)   #  Мектептин аты
     image = models.FileField(upload_to='images/')
     title = models.TextField()   #  Мектеп жонундо кыскача
 
