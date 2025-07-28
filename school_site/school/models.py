@@ -87,7 +87,7 @@ class Teacher(models.Model):
         return f'{self.teacher_full_name}, {self.specialization}, {self.seniority}'
 
 
-@receiver(post_save, sender=Teacher)
+@receiver(post_save, sender=Teacher) 
 def update_teacher_count(sender, instance, **kwargs):
     count_obj, created = TeacherCount.objects.get_or_create(id=1)
     count_obj.count = Teacher.objects.count()
