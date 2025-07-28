@@ -71,7 +71,7 @@ class Admin(models.Model):
 
 
 class TeacherCount(models.Model):
-    count = models.PositiveIntegerField(default=0)
+    count = models.PositiveIntegerField(default=0) 
 
     def __str__(self):
         return f'Teachers count: {self.count}'
